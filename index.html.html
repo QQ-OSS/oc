@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>欢迎来到晴晴的if世界线</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+        header, footer {
+            background-color: #1a1a1a;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        h1, h2 {
+            color: #e60000;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .gallery img, .gallery video {
+            width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .gallery img {
+            width: calc(33.333% - 20px);
+        }
+        .interaction, .game {
+            margin-top: 20px;
+        }
+        a {
+            color: #e60000;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>欢迎来到晴晴的if世界线</h1>
+    </header>
+    <div class="container">
+        <section>
+            <h2>角色介绍</h2>
+            <p>这里是你OC的详细背景故事、性格、能力等介绍。</p>
+        </section>
+        <section class="gallery">
+            <h2>媒体库</h2>
+            <div class="photos">
+                <h3>照片</h3>
+                <img src="photo1.jpg" alt="OC照片1">
+                <img src="photo2.jpg" alt="OC照片2">
+                <img src="photo3.jpg" alt="OC照片3">
+            </div>
+            <div class="videos">
+                <h3>视频</h3>
+                <video src="video1.mp4" controls></video>
+                <video src="video2.mp4" controls></video>
+            </div>
+            <div class="gifs">
+                <h3>GIF</h3>
+                <img src="gif1.gif" alt="OC GIF1">
+                <img src="gif2.gif" alt="OC GIF2">
+            </div>
+        </section>
+        <section class="interaction">
+            <h2>与AI互动</h2>
+            <div id="ai-interaction">
+                <!-- 在这里集成你的AI代码，用来与用户互动 -->
+                <script src="path_to_your_ai_code.js"></script>
+            </div>
+        </section>
+        <section class="game">
+            <h2>RPG小游戏</h2>
+            <div id="game-container">
+                <!-- 在这里嵌入你的RPG小游戏代码 -->
+                <script src="path_to_your_game_code.js"></script>
+            </div>
+        </section>
+        <section class="contact">
+            <h2>联系信息</h2>
+            <p>邮箱: your_email@example.com</p>
+            <p>社交媒体: 
+                <a href="https://twitter.com/yourprofile">Twitter</a>, 
+                <a href="https://facebook.com/yourprofile">Facebook</a>
+            </p>
+        </section>
+    </div>
+    <footer>
+        <p>&copy; 2024 我的OC网站</p>
+    </footer>
+</body>
+</html>
