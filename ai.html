@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Interactive Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: rgb(86, 37, 37); /* 背景颜色 */
+            color: rgb(237, 163, 163); /* 字体颜色 */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            animation: backgroundFade 10s infinite alternate; /* 背景颜色渐变动画 */
+        }
+        @keyframes backgroundFade {
+            0% { background-color: rgb(125, 48, 48); }
+            100% { background-color: rgb(75, 25, 25); }
+        }
+        .chat-box {
+            background-color: rgba(214, 148, 173, 0.26); /* 聊天框背景颜色 */
+            border: 1px solid rgba(214, 148, 173, 0.26); /* 聊天框边框颜色 */
+            border-radius: 12px; /* 聊天框圆角 */
+            width: 80%;
+            max-width: 600px; /* 聊天框最大宽度 */
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(245, 240, 240, 0.2); /* 聊天框阴影 */
+            animation: boxFade 2s infinite alternate; /* 聊天框放大缩小动画 */
+        }
+        @keyframes boxFade {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.02); }
+        }
+        .chat-input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 6px; /* 输入框圆角 */
+            background-color: #724040; /* 输入框背景颜色 */
+            color: rgb(238, 152, 175); /* 输入框字体颜色 */
+            font-size: 16px;
+        }
+        .chat-input:focus {
+            outline: none;
+            box-shadow: 0 0 5px rgba(18, 18, 19, 0.5); /* 输入框聚焦时的阴影效果 */
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-box">
+        <p id="chat-content">哼╭(╯^╰)╮</p> <!-- 初始聊天内容 -->
+        <input type="text" class="chat-input" placeholder="Type a message..."> <!-- 输入框 -->
+    </div>
+
+    <script>
+        // 初始化Web Audio API
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+        function playSound() {
+            // 创建振荡器节点和增益节点
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+
+            // 连接振荡器节点到增益节点，再连接到音频上下文的目的地（扬声器）
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+
+            // 设置振荡器的类型和频率
+            oscillator.type = 'sine'; // 正弦波
+            oscillator.frequency.setValueAtTime(300, audioContext.currentTime); // A4音符，频率为440Hz
+
+            // 设置增益节点的音量
+            gainNode.gain.setValueAtTime(0.1, audioContext.currentTime); // 音量
+
+            // 开始振荡器，并在1秒后停止
+            oscillator.start();
+            oscillator.stop(audioContext.currentTime + 0.3); // 1秒的声音
+        }
+
+        // 监听输入框的键盘事件
+        document.querySelector('.chat-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') { // 检查按下的键是否是回车键
+                const message = this.value; // 获取输入框的值
+                this.value = ''; // 清空输入框
+                document.getElementById('chat-content').innerText += '\n' + message; // 将输入内容添加到聊天内容中
+                playSound(); // 播放声音
+            }
+        });
+    </script>
+</body>
+</html>
